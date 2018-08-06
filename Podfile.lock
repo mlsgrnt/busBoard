@@ -1,0 +1,32 @@
+PODS:
+  - Alamofire (4.7.2)
+  - PeekPop (1.0.0)
+  - VectorMath (0.3.3):
+    - VectorMath/Core (= 0.3.3)
+    - VectorMath/Quartz (= 0.3.3)
+    - VectorMath/SceneKit (= 0.3.3)
+  - VectorMath/Core (0.3.3)
+  - VectorMath/Quartz (0.3.3):
+    - VectorMath/Core
+  - VectorMath/SceneKit (0.3.3):
+    - VectorMath/Core
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - PeekPop (~> 1.0)
+  - VectorMath
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - PeekPop
+    - VectorMath
+
+SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  PeekPop: dcac0f339476b99eb50f8e3bc584f332c744ecf1
+  VectorMath: 9442bb470704903dd0343547454904ba66355302
+
+PODFILE CHECKSUM: 872867648015603fca1295b93a32e4e8639313e8
+
+COCOAPODS: 1.5.3
