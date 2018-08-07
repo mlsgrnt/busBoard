@@ -21,10 +21,10 @@ class Arrival: Equatable {
     
     init(from apiDump: json) {
         self.arrivalTime = formatDate(apiDump["when"] as! String)
-        self.coordinates = [((apiDump["station"] as! NSDictionary)["location"] as! NSDictionary), ((apiDump["nextStation"] as! NSDictionary)["location"] as! NSDictionary)]
+        self.coordinates = [((apiDump["stop"] as! NSDictionary)["location"] as! NSDictionary), ((apiDump["nextStop"] as! NSDictionary)["location"] as! NSDictionary)]
         self.delay = apiDump["delay"] as? Int ?? 0
         self.destination = cleanStationName(apiDump["direction"] as! String)
-        self.id = apiDump["journeyId"] as! String //this is not entirely unique but works for equtability
+        self.id = apiDump["tripId"] as! String //this is not entirely unique but works for equtability
         self.line = apiDump["line"] as! NSDictionary
         self.lineName = generatePrettyLineName(self.line)
         
