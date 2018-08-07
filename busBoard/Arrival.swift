@@ -17,7 +17,11 @@ class Arrival: Equatable {
     let id: String
     let line: NSDictionary
     let lineName: String
+    let nextStop: NSDictionary
     var score: Double?
+    let platform: String?
+    var usefulRemarks: [String]
+    var warnings: [NSDictionary]
     
     init(from apiDump: json) {
         self.arrivalTime = formatDate(apiDump["when"] as! String)
@@ -27,6 +31,40 @@ class Arrival: Equatable {
         self.id = apiDump["tripId"] as! String //this is not entirely unique but works for equtability
         self.line = apiDump["line"] as! NSDictionary
         self.lineName = generatePrettyLineName(self.line)
+        self.nextStop = apiDump["nextStop"] as! NSDictionary
+        self.platform = apiDump["platform"] as? String
+        
+        self.usefulRemarks = []
+        self.warnings = []
+        for remark in apiDump["remarks"] as! NSArray {
+            guard let remark = remark as? NSDictionary else {
+                return //something went wrong
+            }
+            //code is not always present
+            if let code = remark["code"] as? String {
+                if(code == "bf") {
+                    continue //everything is barrier free these days. not useful info.
+                    //TODO: have a secret tatra hunting mode that only shows non-barrier free
+                }
+                if(code == "FB") {
+                    continue //fuck bikes
+                    //TODO: others may not agree
+                }
+                if(code == "EH") {
+                    continue //what even is "vehicle-mounted accessaid"
+                }
+            }
+            
+            if(remark["type"] as! String == "warning") {
+                self.warnings.append(remark)
+                continue
+            }
+            
+            guard let remarkText = remark["text"] as? String else {
+                continue //nothing to see here
+            }
+            self.usefulRemarks.append(remarkText)
+        }
         
     }
     

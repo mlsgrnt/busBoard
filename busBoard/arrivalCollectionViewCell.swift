@@ -25,10 +25,4 @@ class arrivalCollectionViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 5
         self.clipsToBounds = true
     }
-
-    func formatTimeDifference(arrivalTime: Date) -> String {
-        let timeDifference = arrivalTime.timeIntervalSince(Date())
-        let minuteDifference = Int(ceil(timeDifference / 60))
-        return minuteDifference > 0 ? String(minuteDifference) : "now"
-    }
 }
