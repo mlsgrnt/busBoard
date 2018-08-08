@@ -33,7 +33,7 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
             locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
             //locationManager.startMonitoringSignificantLocationChanges()
             locationManager.requestLocation()
-            locationManager.headingFilter = 1
+            locationManager.headingFilter = 0.000000000000001
             locationManager.startUpdatingHeading()
         } else {
             fatalError("u need location, dummy")
@@ -85,6 +85,7 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
         })
     }
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        locationManager.headingFilter = 1 //once we get the first heading, decrease the accuracy
         api.filterArrivalsByCompassDirection(direction: Double(newHeading.magneticHeading), completion: {
             DispatchQueue.main.async {
                 self.collectionView?.reloadSections(IndexSet(integer: 0))
