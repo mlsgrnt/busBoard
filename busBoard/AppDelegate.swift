@@ -26,9 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         api.clearArrivals {
             print("arrivals cleared")
         }
-        let viewController = self.window?.rootViewController as! RootViewController
-        viewController.reloadCollectionView()
-        
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -39,7 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        
+        let viewController = self.window?.rootViewController as! RootViewController
+        viewController.reloadCollectionView()
         
     }
 
