@@ -32,7 +32,7 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
             locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
             //locationManager.startMonitoringSignificantLocationChanges()
             locationManager.requestLocation()
-            locationManager.headingFilter = 0.00000000001
+            locationManager.headingFilter = 1
             locationManager.startUpdatingHeading()
         }
         
