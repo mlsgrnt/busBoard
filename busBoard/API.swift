@@ -49,6 +49,8 @@ class API {
     }
     
     private func getDepartures(stationId: String, duration: Int = 20) {
+        print("aaah getting departures better pray i don't do this too often")
+        
         Alamofire.request("https://vbb-rest.glitch.me/stations/\(stationId)/departures?duration=\(duration)", method: .get, encoding: JSONEncoding.default)
             .responseJSON { response in
                 if let result = response.result.value {
@@ -57,6 +59,9 @@ class API {
                         print(result)
                         fatalError("JSON wasn't array!")
                     }
+                    
+                    //real quick before we load in new ones
+                    self.allArrivals.removeAll()
                     for arrival in JSON {
                         //Don't add cacnelled trips!
                         if((arrival as! json)["cancelled"] == nil) {
@@ -64,8 +69,18 @@ class API {
                         }
                     }
                     
-                    //check that we have enough arrivals!
-                    guard self.allArrivals.count > 1 else {
+                    //create stationLineCount with amazing hacxx. It's not perfect but it provides a good enough heuristic
+                    //first let's check for no departures at all
+                    if(self.allArrivals.count == 0) {
+                        //bad start. let's increase right away
+                        self.getDepartures(stationId: stationId, duration: duration + 100)
+                        return
+                    }
+                    //are you ready for this ALGORITHM
+                    let stationLineCount = (((JSON[0] as! json)["stop"] as! json)["lines"] as! NSArray).count
+                    
+                    //check that we have at least 2 departures for each line (one for each direction)
+                    guard self.allArrivals.count > stationLineCount * 2 else {
                         //we need bigger guns
                         self.getDepartures(stationId: stationId, duration: duration + 100)
                         return
@@ -80,13 +95,18 @@ class API {
     //THIS IS THE SORTING PART
     //IT'S REALLY REALLY BAD
     func filterArrivalsByCompassDirection(direction orientation: Double, completion: @escaping () -> Void) {
+        //before we do anything else, let's be both realistic and useful and only show stuff in the next 60 minutes
+        let soonArrivals = self.allArrivals.filter { (arrival: Arrival) -> Bool in
+            return arrival.arrivalTime.timeIntervalSince(Date()) < 3600
+        }
+        
         if(self.allArrivals.count == 0) {
             return
         }
         
         var filtered = [Arrival]()
         
-        let sortedByLine = self.allArrivals.reduce(into: [String:[Arrival]]()) { (dict, entry) in
+        let sortedByLine = soonArrivals.reduce(into: [String:[Arrival]]()) { (dict, entry) in
             let key = entry.line.value(forKey: "id") as! String
             if var existingArray = dict[key] {
                 existingArray.append(entry)
