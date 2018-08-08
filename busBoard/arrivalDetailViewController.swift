@@ -71,14 +71,14 @@ class arrivalDetailViewController: UIViewController {
         if(nextArrivals.count > 1) {
             arrivalCounter += 1
             
-            if(nextArrivals[arrivalCounter].arrivalTime == nextArrivals[arrivalCounter + 1].arrivalTime) {
+            if(nextArrivals[arrivalCounter].arrivalTime == nextArrivals[arrivalCounter - 1].arrivalTime) {
                 arrivalCounter += 1 //push it even further if it's the same
             }
             when2Label.text = getDiffString(arrivalTime: nextArrivals[arrivalCounter].arrivalTime)
             if(nextArrivals.count > 2) {
                 arrivalCounter += 1
                 
-                if(nextArrivals[arrivalCounter].arrivalTime == nextArrivals[arrivalCounter + 1].arrivalTime) {
+                if(nextArrivals[arrivalCounter].arrivalTime == nextArrivals[arrivalCounter - 1].arrivalTime) {
                     arrivalCounter += 1 //push it even further if it's the same
                 }
                 when3Label.text = getDiffString(arrivalTime: nextArrivals[2].arrivalTime)
