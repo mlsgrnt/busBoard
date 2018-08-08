@@ -36,15 +36,19 @@ class Arrival: Equatable {
         
         self.usefulRemarks = []
         self.warnings = []
+        
+        var barrierFree = false
+        
         for remark in apiDump["remarks"] as! NSArray {
             guard let remark = remark as? NSDictionary else {
                 return //something went wrong
             }
-            //code is not always present
+            
             if let code = remark["code"] as? String {
                 if(code == "bf") {
-                    continue //everything is barrier free these days. not useful info.
-                    //TODO: have a secret tatra hunting mode that only shows non-barrier free
+                    barrierFree = true
+                    continue //"secure by default" vibe
+                    //only show a message if it's NOT barrier free.
                 }
                 if(code == "FB") {
                     continue //fuck bikes
@@ -64,6 +68,10 @@ class Arrival: Equatable {
                 continue //nothing to see here
             }
             self.usefulRemarks.append(remarkText)
+            
+            if(barrierFree == false) {
+                self.usefulRemarks.append("Not wheelchair accessible!")
+            }
         }
         
     }
