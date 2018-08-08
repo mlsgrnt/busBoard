@@ -10,18 +10,6 @@ import UIKit
 class RootViewController: UINavigationController {
     
     var arrivalController: MainCollectionViewController!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     public func reloadCollectionView() {
         guard let arrivalController = self.childViewControllers[0] as? MainCollectionViewController else {
@@ -34,7 +22,15 @@ class RootViewController: UINavigationController {
         DispatchQueue.main.async {
             arrivalController.collectionView?.reloadSections(IndexSet(integer: 0)) //this clears the screen
         }
-
+    }
+    
+    public func stopUpdatingHeading() {
+        guard let arrivalController = self.childViewControllers[0] as? MainCollectionViewController else {
+            fatalError("Child isn't proper!")
+        }
+        self.arrivalController = arrivalController
+        
+        arrivalController.stopUpdatingHeading()
     }
     
     /*

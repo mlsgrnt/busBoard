@@ -26,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         api.clearArrivals {
             print("arrivals cleared")
         }
+        
+        let viewController = self.window?.rootViewController as! RootViewController
+        viewController.stopUpdatingHeading()
+        
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {

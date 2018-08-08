@@ -20,6 +20,7 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
     
     var peekPop: PeekPop?
     let locationManager = CLLocationManager()
+    
     let api = API.sharedInstance
     
     override func viewDidLoad() {
@@ -34,6 +35,8 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
             locationManager.requestLocation()
             locationManager.headingFilter = 1
             locationManager.startUpdatingHeading()
+        } else {
+            fatalError("u need location, dummy")
         }
         
         peekPop = PeekPop(viewController: self)
@@ -87,6 +90,9 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
                 self.collectionView?.reloadSections(IndexSet(integer: 0))
             }
         })
+    }
+    func stopUpdatingHeading() {
+        self.locationManager.stopUpdatingHeading()
     }
     
     //MARK: - CollectionView
