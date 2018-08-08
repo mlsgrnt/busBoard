@@ -32,8 +32,8 @@ class API {
     }
     
     func getArrivals(longitude: Double, latitude: Double, completion: @escaping () -> Void) {
-        Alamofire.request("https://bvg-rest.glitch.me/stations/nearby?latitude=\(latitude)&longitude=\(longitude)", method: .get, encoding: JSONEncoding.default)
-        //Alamofire.request("https://bvg-rest.glitch.me/stations/nearby?latitude=52.525084&longitude=13.369402", method: .get, encoding: JSONEncoding.default)
+        Alamofire.request("https://vbb-rest.glitch.me/stations/nearby?latitude=\(latitude)&longitude=\(longitude)", method: .get, encoding: JSONEncoding.default)
+        //Alamofire.request("https://vbb-rest.glitch.me/stations/nearby?latitude=52.525084&longitude=13.369402", method: .get, encoding: JSONEncoding.default)
             .responseJSON { response in
                 if let result = response.result.value {
                     let JSON = result as! NSArray
@@ -49,10 +49,14 @@ class API {
     }
     
     private func getDepartures(stationId: String, duration: Int = 20) {
-        Alamofire.request("https://bvg-rest.glitch.me/stations/\(stationId)/departures?duration=\(duration)", method: .get, encoding: JSONEncoding.default)
+        Alamofire.request("https://vbb-rest.glitch.me/stations/\(stationId)/departures?duration=\(duration)", method: .get, encoding: JSONEncoding.default)
             .responseJSON { response in
                 if let result = response.result.value {
-                    let JSON = result as! NSArray
+                    guard let JSON = result as? NSArray else {
+                        //what in the world
+                        print(result)
+                        fatalError("JSON wasn't array!")
+                    }
                     for arrival in JSON {
                         //Don't add cacnelled trips!
                         if((arrival as! json)["cancelled"] == nil) {

@@ -54,12 +54,12 @@ class Arrival: Equatable {
                     continue //what even is "vehicle-mounted accessaid"
                 }
             }
-            
+            /* temporarily disabled because of the stupid new api
             if(remark["type"] as! String == "warning") {
                 self.warnings.append(remark)
                 continue
             }
-            
+            */
             guard let remarkText = remark["text"] as? String else {
                 continue //nothing to see here
             }
