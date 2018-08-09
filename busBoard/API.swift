@@ -48,7 +48,7 @@ class API {
         }
     }
     
-    private func getDepartures(stationId: String, duration: Int = 20) {
+    private func getDepartures(stationId: String, duration: Int = 30) {
         print("aaah getting departures better pray i don't do this too often")
         
         Alamofire.request("https://vbb-rest.glitch.me/stations/\(stationId)/departures?duration=\(duration)", method: .get, encoding: JSONEncoding.default)
@@ -77,12 +77,14 @@ class API {
                         return
                     }
                     //are you ready for this ALGORITHM
-                    let stationLineCount = (((JSON[0] as! json)["stop"] as! json)["lines"] as! NSArray).count
+                    let stationLineCount = (((JSON[0] as! json)["stop"] as! json)["lines"] as! NSArray).filter({ (line) -> Bool in
+                        return (line as! NSDictionary)["night"] as! Int == 0
+                    }).count                    
                     
                     //check that we have at least 2 departures for each line (one for each direction)
                     guard self.allArrivals.count > stationLineCount * 2 else {
                         //we need bigger guns
-                        self.getDepartures(stationId: stationId, duration: duration + 100)
+                        self.getDepartures(stationId: stationId, duration: duration + 60)
                         return
                     }
                 }
