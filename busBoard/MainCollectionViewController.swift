@@ -63,15 +63,7 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
     func previewingContext(_ previewingContext: PreviewingContext, commitViewController viewControllerToCommit: UIViewController) {    
         self.navigationController?.pushViewController(viewControllerToCommit, animated: false)
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name:"Main", bundle:nil)
-        if let previewViewController = storyboard.instantiateViewController(withIdentifier: "arrivalDetail") as? arrivalDetailViewController {
-            self.navigationController?.pushViewController(previewViewController, animated: true)
-            previewViewController.arrival = api.arrivals[indexPath.item]
-        }
-    }
-    
+        
     //MARK: - Location Stuff
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         fatalError("location error: \(error)")
