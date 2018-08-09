@@ -15,6 +15,7 @@ class arrivalDetailViewController: UIViewController {
     @IBOutlet weak var lineNameLabel: UILabel!
     @IBOutlet weak var lineDestinationLabel: UILabel!
     @IBOutlet weak var delayLabel: UILabel!
+    @IBOutlet weak var arrivingInSTATICLabel: UILabel!
     @IBOutlet weak var when1Label: UILabel!
     @IBOutlet weak var when2Label: UILabel!
     @IBOutlet weak var when3Label: UILabel!
@@ -38,6 +39,19 @@ class arrivalDetailViewController: UIViewController {
         
         //line based background color
         self.view.backgroundColor = getLineColor(line: arrival.line)
+        
+        //U4 text color fix
+        //todo: opacity
+        if(arrival.line["id"] as! String == "u4") {
+            lineNameLabel.textColor = UIColor.darkText
+            lineDestinationLabel.textColor = UIColor.darkText
+            delayLabel.textColor = UIColor.darkText
+            arrivingInSTATICLabel.textColor = UIColor.darkText
+            when1Label.textColor = UIColor.darkText
+            when2Label.textColor = UIColor.darkText
+            when3Label.textColor = UIColor.darkText
+            remarksLabel.textColor = UIColor.darkText
+        }
         
         //check for platform and if there is one set it
         if(arrival.platform != nil) {

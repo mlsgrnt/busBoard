@@ -79,7 +79,7 @@ class API {
                     //are you ready for this ALGORITHM
                     let stationLineCount = (((JSON[0] as! json)["stop"] as! json)["lines"] as! NSArray).filter({ (line) -> Bool in
                         return (line as! NSDictionary)["night"] as! Int == 0
-                    }).count                    
+                    }).count
                     
                     //check that we have at least 2 departures for each line (one for each direction)
                     guard self.allArrivals.count > stationLineCount * 2 else {

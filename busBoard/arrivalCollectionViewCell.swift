@@ -21,6 +21,18 @@ class arrivalCollectionViewCell: UICollectionViewCell {
         //set cell background color
         self.backgroundColor = getLineColor(line: arrival.line)
         
+        //U4 Fix
+        if(arrival.line["id"] as! String == "u4") {
+            whatLabel.textColor = UIColor.darkText
+            whereLabel.textColor = UIColor.darkText
+            whenLabel.textColor = UIColor.darkText
+        } else {
+            //because cells are dequeued we need to do this
+            whatLabel.textColor = UIColor.white
+            whereLabel.textColor = UIColor.white
+            whenLabel.textColor = UIColor.white
+        }
+        
         //border radius to match popup
         self.layer.cornerRadius = 5
         self.clipsToBounds = true

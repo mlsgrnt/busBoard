@@ -227,6 +227,7 @@
                         <viewLayoutGuide key="safeArea" id="fET-vN-ddo"/>
                     </view>
                     <connections>
+                        <outlet property="arrivingInSTATICLabel" destination="GMK-iX-vCN" id="cSH-bW-wTq"/>
                         <outlet property="delayLabel" destination="7oo-Hl-z5F" id="bH5-KA-1pH"/>
                         <outlet property="lineDestinationLabel" destination="w6y-GG-R3n" id="CJM-OF-RVA"/>
                         <outlet property="lineNameLabel" destination="eWh-xj-5ox" id="Vs5-Co-frJ"/>
