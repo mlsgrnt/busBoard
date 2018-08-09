@@ -20,6 +20,7 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
     
     var peekPop: PeekPop?
     let locationManager = CLLocationManager()
+    var timer: Timer?
     
     let api = API.sharedInstance
     
@@ -39,6 +40,13 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
             fatalError("u need location, dummy")
         }
         
+        //keep all values up to date
+        //this will result in some now-trash at the top but based on the use case for this app that isn't a big deal
+        self.timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [] _ in
+            self.collectionView?.reloadData()
+        }
+        
+        //setup peekpop
         peekPop = PeekPop(viewController: self)
         peekPop?.registerForPreviewingWithDelegate(self, sourceView: collectionView!)
     }
