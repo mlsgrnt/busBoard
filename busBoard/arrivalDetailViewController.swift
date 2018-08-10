@@ -38,26 +38,8 @@ class arrivalDetailViewController: UIViewController {
         }
         
         //line based background color
-        self.view.backgroundColor = getLineColor(line: arrival.line)
+        self.view.backgroundColor = getLineColor(line: arrival.lineName)
         
-        //U4 text color fix
-        //todo: opacity
-        if(arrival.line["id"] as! String == "u4") {
-            lineNameLabel.textColor = UIColor.darkText
-            lineDestinationLabel.textColor = UIColor.darkText
-            delayLabel.textColor = UIColor.darkText
-            arrivingInSTATICLabel.textColor = UIColor.darkText
-            when1Label.textColor = UIColor.darkText
-            when2Label.textColor = UIColor.darkText
-            when3Label.textColor = UIColor.darkText
-            remarksLabel.textColor = UIColor.darkText
-        }
-        
-        //check for platform and if there is one set it
-        if(arrival.platform != nil) {
-            platformStackView.isHidden = false
-            platformNumberLabel.text = arrival.platform
-        }
         
         //set labels
         lineNameLabel.text = arrival.lineName
@@ -68,7 +50,7 @@ class arrivalDetailViewController: UIViewController {
         let api = API.sharedInstance
         let nextArrivals = api.allArrivals
             .filter { (nextArrival) -> Bool in
-                return nextArrival.nextStop["id"] as! String == arrival.nextStop["id"] as! String && nextArrival.line["id"] as! String == arrival.line["id"] as! String
+                return nextArrival.destination as! String == arrival.destination as! String && nextArrival.lineName as! String == arrival.lineName as! String
             }
             .sorted { (a, b) -> Bool in
                 return a.arrivalTime < b.arrivalTime
@@ -99,20 +81,9 @@ class arrivalDetailViewController: UIViewController {
             }
         }
         
-        //check for remarks
-        if(arrival.usefulRemarks.count > 0) {
-            remarksStackView.isHidden = false
-            
-            var allRemarks = ""
-            for remark in arrival.usefulRemarks {
-                allRemarks += "\(remark)" + "\n"
-            }
-            remarksLabel.text = allRemarks
-        }
-        
         //set a title
         //TODO: make these titles a little more friendly
-        self.title = (arrival.line["product"] as? String)?.capitalized
+        self.title = (arrival.lineName as? String)?.capitalized
         
         //setup navbar
         self.navigationItem.largeTitleDisplayMode = .never
