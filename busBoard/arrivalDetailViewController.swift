@@ -116,6 +116,19 @@ class arrivalDetailViewController: UIViewController {
         
         //setup navbar
         self.navigationItem.largeTitleDisplayMode = .never
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Stops", style: .plain, target: self, action: #selector(stopsTapped))
+    }
+    
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let AllStationsTableViewController = segue.destination as? AllStationsTableViewController else {
+            fatalError()
+        }
+        AllStationsTableViewController.arrival = self.arrival
+    }
+    @objc func stopsTapped() {
+        self.performSegue(withIdentifier: "viewAllStops", sender: self)
     }
 }
 

@@ -50,8 +50,8 @@ class API {
     private func getDepartures(stationId: String, duration: Int = 30) {
         print("aaah getting departures better pray i don't do this too often")
         
-        //Alamofire.request("https://vbb-rest.glitch.me/stations/\(stationId)/departures?duration=\(duration)", method: .get, encoding: JSONEncoding.default)
-        Alamofire.request("http://192.168.2.100:5000/departures.json", method: .get, encoding: JSONEncoding.default)
+        Alamofire.request("https://vbb-rest.glitch.me/stations/\(stationId)/departures?duration=\(duration)", method: .get, encoding: JSONEncoding.default)
+        //Alamofire.request("http://192.168.2.100:5000/departures.json", method: .get, encoding: JSONEncoding.default)
             .responseJSON { response in
                 if let result = response.result.value {
                     guard let JSON = result as? NSArray else {
@@ -90,6 +90,22 @@ class API {
                 }
                 
                 //No update now! Update occurs on filter!
+        }
+    }
+    
+    public func getStationsAlong(journeyId: String, completion: @escaping (_: NSArray) -> Void) {
+        let safeJourneyId = journeyId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        let requestUrl = "https://vbb-rest.glitch.me/journeys/legs/\(safeJourneyId!)?lineName=null"
+        Alamofire.request(requestUrl, method: .get, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                if let result = response.result.value {
+                    guard let JSON = result as? NSDictionary else {
+                        //what in the world
+                        print(result)
+                        fatalError("JSON wasn't array!")
+                    }
+                    completion(JSON["passed"] as! NSArray)
+                }
         }
     }
     
