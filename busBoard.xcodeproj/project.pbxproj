@@ -11,6 +11,7 @@
 		37DBC2EB9A6AA4487353C852 /* Pods_busBoardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F42E21B15BD22AD8FA13DD41 /* Pods_busBoardTests.framework */; };
 		8C066F7E2121BDDF0055CB7F /* AllStationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C066F7D2121BDDE0055CB7F /* AllStationsTableViewController.swift */; };
 		8C066F802121CF720055CB7F /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C066F7F2121CF720055CB7F /* StationTableViewCell.swift */; };
+		8C066F822121D65B0055CB7F /* blobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C066F812121D65B0055CB7F /* blobView.swift */; };
 		8C54872521188FC300E5593B /* arrivalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C54872421188FC300E5593B /* arrivalDetailViewController.swift */; };
 		8C62314221199AE400FD109A /* timeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C62314121199AE300FD109A /* timeFunctions.swift */; };
 		8CC2BAE1211836C200D7BA9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC2BAE0211836C200D7BA9D /* AppDelegate.swift */; };
@@ -45,6 +46,7 @@
 		4A1BF2BA3D33673CD8E94C13 /* Pods-busBoard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-busBoard.release.xcconfig"; path = "Pods/Target Support Files/Pods-busBoard/Pods-busBoard.release.xcconfig"; sourceTree = "<group>"; };
 		8C066F7D2121BDDE0055CB7F /* AllStationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AllStationsTableViewController.swift; path = /Users/blydro/code/busBoard/busBoard/AllStationsTableViewController.swift; sourceTree = "<absolute>"; };
 		8C066F7F2121CF720055CB7F /* StationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StationTableViewCell.swift; path = /Users/blydro/code/busBoard/busBoard/StationTableViewCell.swift; sourceTree = "<absolute>"; };
+		8C066F812121D65B0055CB7F /* blobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = blobView.swift; path = /Users/blydro/code/busBoard/busBoard/blobView.swift; sourceTree = "<absolute>"; };
 		8C54872421188FC300E5593B /* arrivalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arrivalDetailViewController.swift; sourceTree = "<group>"; };
 		8C62314121199AE300FD109A /* timeFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = timeFunctions.swift; path = /Users/blydro/code/busBoard/busBoard/timeFunctions.swift; sourceTree = "<absolute>"; };
 		8CC2BADD211836C200D7BA9D /* busBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = busBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +130,7 @@
 				8C54872421188FC300E5593B /* arrivalDetailViewController.swift */,
 				8C066F7D2121BDDE0055CB7F /* AllStationsTableViewController.swift */,
 				8C066F7F2121CF720055CB7F /* StationTableViewCell.swift */,
+				8C066F812121D65B0055CB7F /* blobView.swift */,
 				8CC2BAE4211836C200D7BA9D /* Main.storyboard */,
 				8CC2BB062118510C00D7BA9D /* API.swift */,
 				8CC2BB0221183DB600D7BA9D /* Arrival.swift */,
@@ -333,6 +336,7 @@
 				8CC2BB0321183DB600D7BA9D /* Arrival.swift in Sources */,
 				8CCCA4812118670B007AE5CC /* cleanStationName.swift in Sources */,
 				8CCCA48D21186748007AE5CC /* RootViewController.swift in Sources */,
+				8C066F822121D65B0055CB7F /* blobView.swift in Sources */,
 				8CCCA48F21186A22007AE5CC /* getLineColor.swift in Sources */,
 				8CC2BAE3211836C200D7BA9D /* MainCollectionViewController.swift in Sources */,
 				8CC2BB072118510C00D7BA9D /* API.swift in Sources */,

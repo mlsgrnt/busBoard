@@ -33,6 +33,7 @@ class API {
     
     func getArrivals(longitude: Double, latitude: Double, completion: @escaping () -> Void) {
         Alamofire.request("https://vbb-rest.glitch.me/stations/nearby?latitude=\(latitude)&longitude=\(longitude)", method: .get, encoding: JSONEncoding.default)
+        //Alamofire.request("http://192.168.2.100:5000/nearby.json", method: .get, encoding: JSONEncoding.default)
             .responseJSON { response in
                 if let result = response.result.value {
                     let JSON = result as! NSArray
@@ -96,6 +97,7 @@ class API {
     public func getStationsAlong(journeyId: String, completion: @escaping (_: NSArray) -> Void) {
         let safeJourneyId = journeyId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         let requestUrl = "https://vbb-rest.glitch.me/journeys/legs/\(safeJourneyId!)?lineName=null"
+        //let requestUrl = "http://192.168.2.100:5000/leg.json"
         Alamofire.request(requestUrl, method: .get, encoding: JSONEncoding.default)
             .responseJSON { response in
                 if let result = response.result.value {

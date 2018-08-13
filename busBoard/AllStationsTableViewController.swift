@@ -13,7 +13,7 @@ class AllStationsTableViewController: UITableViewController {
     
     var arrival: Arrival?
     var stations: NSArray?
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         let journeyId = self.arrival?.id
         api.getStationsAlong(journeyId: journeyId!) { (allStations) in
@@ -26,12 +26,7 @@ class AllStationsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = "All Stations"
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
 
@@ -57,21 +52,30 @@ class AllStationsTableViewController: UITableViewController {
         let journeySection = stations![indexPath.row] as! NSDictionary
         let station = journeySection["station"] as! NSDictionary
         
+        var blobType = "mid"
+        
         // Configure the cell...
         cell.stationNameLabel.text = cleanStationName(station["name"] as! String)
         
         if(indexPath.row == 0 || indexPath.row == stations!.count - 1) {
-            cell.stationNameLabel.font = UIFont.boldSystemFont(ofSize: 18.0)
+            cell.stationNameLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
+            blobType = indexPath.row == stations!.count - 1 ? "end" : "start"
         } else {
-            cell.stationNameLabel.font = UIFont.systemFont(ofSize: 18.0)
+            cell.stationNameLabel.font = UIFont.systemFont(ofSize: 22.0)
         }
         
         if(cell.stationNameLabel.text == api.nearestStationName) {
-            cell.backgroundColor = UIColor.green
+            cell.backgroundColor = UIColor.gray
+            self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
         } else {
             cell.backgroundColor = UIColor.white
         }
+        
+        cell.blobView.setBlobType(color: getLineColor(line: arrival!.line), type: blobType)
 
+        //force redraw
+        cell.blobView.setNeedsDisplay()
+        
         return cell
     }
     
