@@ -92,6 +92,37 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
         api.getArrivals(longitude: location.longitude, latitude: location.latitude, completion: {
             DispatchQueue.main.async {
                 self.navigationItem.title = self.api.nearestStationName
+                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                //SIMULATOR STUFF!!!!!!!!!!!
+                if (TARGET_OS_SIMULATOR != 0) {
+                    //simulator needs fake compass data
+                    self.api.filterArrivalsByCompassDirection(direction: 0, completion: {
+                        DispatchQueue.main.async {
+                            if(self.allDeparturesButton.title == "") {
+                                self.allDeparturesButton.title = "All"
+                            }
+                            self.collectionView?.reloadSections(IndexSet(integer: 0))
+                        }
+                    })
+                    self.api.filterArrivalsByCompassDirection(direction: 1, completion: {
+                        DispatchQueue.main.async {
+                            if(self.allDeparturesButton.title == "") {
+                                self.allDeparturesButton.title = "All"
+                            }
+                            self.collectionView?.reloadSections(IndexSet(integer: 0))
+                        }
+                    })
+                    self.api.filterArrivalsByCompassDirection(direction: 2, completion: {
+                        DispatchQueue.main.async {
+                            if(self.allDeparturesButton.title == "") {
+                                self.allDeparturesButton.title = "All"
+                            }
+                            self.collectionView?.reloadSections(IndexSet(integer: 0))
+                        }
+                    })
+                }
+                //END OF SIMULATOR STUFF!!!!!!!!
+                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
             }
         })
     }
