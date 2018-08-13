@@ -97,13 +97,18 @@ class API {
     //THIS IS THE SORTING PART
     //IT'S REALLY REALLY BAD
     func filterArrivalsByCompassDirection(direction orientation: Double, completion: @escaping () -> Void) {
-        //before we do anything else, let's be both realistic and useful and only show stuff in the next 60 minutes
-        let soonArrivals = self.allArrivals.filter { (arrival: Arrival) -> Bool in
-            return arrival.arrivalTime.timeIntervalSince(Date()) < 3600
-        }
-        
+        //if we don't have any arrivals, let's do nothing
+        //TODO: display a message!
         if(self.allArrivals.count == 0) {
             return
+        }
+        
+        //before we do anything else, let's be both realistic and useful and only show stuff in the next 60 minutes
+        var soonArrivals = self.allArrivals.filter { (arrival: Arrival) -> Bool in
+            return arrival.arrivalTime.timeIntervalSince(Date()) < 3600
+        }
+        if(soonArrivals.count == 0) {
+            soonArrivals = self.allArrivals
         }
         
         var filtered = [Arrival]()
