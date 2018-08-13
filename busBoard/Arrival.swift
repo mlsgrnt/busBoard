@@ -17,6 +17,7 @@ class Arrival: Equatable {
     let id: String
     let line: NSDictionary
     let lineName: String
+    let lineProduct: String
     let nextStop: NSDictionary
     var score: Double?
     let platform: String?
@@ -33,6 +34,17 @@ class Arrival: Equatable {
         self.lineName = generatePrettyLineName(self.line)
         self.nextStop = apiDump["nextStop"] as! NSDictionary
         self.platform = apiDump["platform"] as? String
+        
+        //make line product type prettier:
+        var lineProduct = self.line["product"] as! String
+        if(lineProduct == "suburban") {
+            lineProduct = "S-Bahn"
+        }
+        if(lineProduct == "Subway") {
+            lineProduct = "U-Bahn"
+        }
+
+        self.lineProduct = lineProduct
         
         self.usefulRemarks = []
         self.warnings = []
@@ -73,7 +85,6 @@ class Arrival: Equatable {
                 self.usefulRemarks.append("Not wheelchair accessible!")
             }
         }
-        
     }
     
     //equitability

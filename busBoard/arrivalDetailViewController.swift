@@ -112,7 +112,7 @@ class arrivalDetailViewController: UIViewController {
         
         //set a title
         //TODO: make these titles a little more friendly
-        self.title = (arrival.line["product"] as? String)?.capitalized
+        self.title = arrival.lineProduct.capitalized
         
         //setup navbar
         self.navigationItem.largeTitleDisplayMode = .never
