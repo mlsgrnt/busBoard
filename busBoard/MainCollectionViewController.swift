@@ -17,6 +17,7 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
     
     //Outlets
     @IBOutlet var mainCollectionView: UICollectionView!
+    @IBOutlet weak var allDeparturesButton: UIBarButtonItem!
     
     var peekPop: PeekPop?
     let locationManager = CLLocationManager()
@@ -27,6 +28,12 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //hide all departures button until we're all loaded
+        //not the best way to do it because you can still click on it
+        //but it's good enough for now
+        //TODO:
+        allDeparturesButton.title = ""
         
         //get storyboard to load view from
         self.sb = UIStoryboard(name:"Main", bundle:nil)
@@ -92,6 +99,9 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
         locationManager.headingFilter = 1 //once we get the first heading, decrease the accuracy
         api.filterArrivalsByCompassDirection(direction: Double(newHeading.magneticHeading), completion: {
             DispatchQueue.main.async {
+                if(self.allDeparturesButton.title == "") {
+                    self.allDeparturesButton.title = "All"
+                }
                 self.collectionView?.reloadSections(IndexSet(integer: 0))
             }
         })

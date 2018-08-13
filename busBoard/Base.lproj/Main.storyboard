@@ -91,6 +91,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="allDeparturesButton" destination="H3e-ju-5BD" id="MjK-wH-RlU"/>
                         <outlet property="mainCollectionView" destination="8a0-PN-HJ0" id="yRd-Yt-bEV"/>
                     </connections>
                 </collectionViewController>
