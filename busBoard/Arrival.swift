@@ -40,7 +40,7 @@ class Arrival: Equatable {
         if(lineProduct == "suburban") {
             lineProduct = "S-Bahn"
         }
-        if(lineProduct == "Subway") {
+        if(lineProduct == "subway") {
             lineProduct = "U-Bahn"
         }
 
