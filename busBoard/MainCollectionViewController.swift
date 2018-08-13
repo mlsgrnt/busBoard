@@ -21,11 +21,16 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
     var peekPop: PeekPop?
     let locationManager = CLLocationManager()
     var timer: Timer?
+    var sb: UIStoryboard?
     
     let api = API.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //get storyboard to load view from
+        self.sb = UIStoryboard(name:"Main", bundle:nil)
+        
         print("getting location")
         // Do any additional setup after loading the view, typically from a nib.
         self.locationManager.requestWhenInUseAuthorization()
@@ -53,8 +58,7 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
     
     //MARK: - peekpop stuff
     func previewingContext(_ previewingContext: PreviewingContext, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        let storyboard = UIStoryboard(name:"Main", bundle:nil)
-        if let previewViewController = storyboard.instantiateViewController(withIdentifier: "arrivalDetail") as? arrivalDetailViewController {
+        if let previewViewController = self.sb!.instantiateViewController(withIdentifier: "arrivalDetail") as? arrivalDetailViewController {
             if let indexPath = collectionView!.indexPathForItem(at: location) {
                 let arrival = api.arrivals[indexPath.item]
                 if let layoutAttributes = collectionView!.layoutAttributesForItem(at: indexPath) {

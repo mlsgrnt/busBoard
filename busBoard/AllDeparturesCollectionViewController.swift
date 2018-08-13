@@ -19,11 +19,15 @@ class AllDeparturesCollectionViewController: UICollectionViewController, PeekPop
     
     var peekPop: PeekPop?
     var timer: Timer?
+    var sb: UIStoryboard?
     
     let api = API.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //get storyboard to load view from
+        self.sb = UIStoryboard(name:"Main", bundle:nil)
         
         //keep all values up to date
         //this will result in some now-trash at the top but based on the use case for this app that isn't a big deal
@@ -38,8 +42,7 @@ class AllDeparturesCollectionViewController: UICollectionViewController, PeekPop
     
     //MARK: - peekpop stuff
     func previewingContext(_ previewingContext: PreviewingContext, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        let storyboard = UIStoryboard(name:"Main", bundle:nil)
-        if let previewViewController = storyboard.instantiateViewController(withIdentifier: "arrivalDetail") as? arrivalDetailViewController {
+        if let previewViewController = self.sb?.instantiateViewController(withIdentifier: "arrivalDetail") as? arrivalDetailViewController {
             if let indexPath = collectionView!.indexPathForItem(at: location) {
                 let arrival = api.allArrivals[indexPath.item]
                 if let layoutAttributes = collectionView!.layoutAttributesForItem(at: indexPath) {
