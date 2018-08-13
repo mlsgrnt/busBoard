@@ -13,6 +13,8 @@ class AllStationsTableViewController: UITableViewController {
     
     var arrival: Arrival?
     var stations: NSArray?
+    
+    var hasScrolled: Bool?
         
     override func viewWillAppear(_ animated: Bool) {
         let journeyId = self.arrival?.id
@@ -65,10 +67,13 @@ class AllStationsTableViewController: UITableViewController {
         }
         
         if(cell.stationNameLabel.text == api.nearestStationName) {
-            cell.backgroundColor = UIColor.gray
-            self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+            cell.stationNameLabel.backgroundColor = UIColor.lightGray //TODO: REFINE THIS!!!
+            if(self.hasScrolled != true) {
+                self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                self.hasScrolled = true
+            }
         } else {
-            cell.backgroundColor = UIColor.white
+            cell.stationNameLabel.backgroundColor = UIColor.white
         }
         
         cell.blobView.setBlobType(color: getLineColor(line: arrival!.line), type: blobType)
