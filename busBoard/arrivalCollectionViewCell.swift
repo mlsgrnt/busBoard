@@ -36,5 +36,15 @@ class arrivalCollectionViewCell: UICollectionViewCell {
         //border radius to match popup
         self.layer.cornerRadius = 5
         self.clipsToBounds = true
+        
+        //shadow!
+        let shadowPath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)  //Here you control x and y
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowRadius = 3.0 //Here your control your blur
+        self.layer.masksToBounds =  false
+        self.layer.shadowPath = shadowPath.cgPath
     }
 }
