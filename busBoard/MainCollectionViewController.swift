@@ -18,6 +18,7 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
     //Outlets
     @IBOutlet var mainCollectionView: UICollectionView!
     @IBOutlet weak var allDeparturesButton: UIBarButtonItem!
+    @IBOutlet weak var loadingSpinnerView: UIActivityIndicatorView!
     
     var peekPop: PeekPop?
     let locationManager = CLLocationManager()
@@ -57,6 +58,9 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
         self.timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [] _ in
             self.collectionView?.reloadData()
         }
+        
+        //Start up the loading spinner (in case we're reloading)
+        self.loadingSpinnerView.startAnimating()
         
         //setup peekpop
         peekPop = PeekPop(viewController: self)
@@ -99,6 +103,10 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
         locationManager.headingFilter = 1 //once we get the first heading, decrease the accuracy
         api.filterArrivalsByCompassDirection(direction: Double(newHeading.magneticHeading), completion: {
             DispatchQueue.main.async {
+                //Loading indicator disappear!
+                //TODO: we're calling this a biiit often. Find somewhere more appropriate to put this!
+                self.loadingSpinnerView.stopAnimating()
+                
                 if(self.allDeparturesButton.title == "") {
                     self.allDeparturesButton.title = "All"
                 }
