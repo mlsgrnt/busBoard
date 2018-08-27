@@ -78,7 +78,7 @@ class arrivalDetailViewController: UIViewController {
         //It is safe to only incrmenet this by one and then not check again because you know what if it's the same a third time than maybe this bus really is showing up that often
         //sometimes it's not the software's fault it's the transit company's fault
         
-        //TODO: while loop you fucking idiot
+        //TODO: while loop?
         var arrivalCounter = 0
         
         when1Label.text = getDiffString(arrivalTime: nextArrivals[arrivalCounter].arrivalTime)

@@ -80,10 +80,10 @@ class Arrival: Equatable {
                 continue //nothing to see here
             }
             self.usefulRemarks.append(remarkText)
-            
-            if(barrierFree == false) {
-                self.usefulRemarks.append("Not wheelchair accessible!")
-            }
+        }
+        
+        if(barrierFree == false) {
+            self.usefulRemarks.append("Not wheelchair accessible!")
         }
     }
     
