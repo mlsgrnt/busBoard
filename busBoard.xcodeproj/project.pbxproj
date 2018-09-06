@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		021B29E221411A99008A153D /* AllStationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021B29E121411A99008A153D /* AllStationsTableViewController.swift */; };
 		1CC15FCE91BE20AA995E6249 /* Pods_busBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C134889522F306F30F0E230 /* Pods_busBoard.framework */; };
 		37DBC2EB9A6AA4487353C852 /* Pods_busBoardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F42E21B15BD22AD8FA13DD41 /* Pods_busBoardTests.framework */; };
-		8C066F7E2121BDDF0055CB7F /* AllStationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C066F7D2121BDDE0055CB7F /* AllStationsTableViewController.swift */; };
+		8C066F7E2121BDDF0055CB7F /* AllDeparturesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C066F7D2121BDDE0055CB7F /* AllDeparturesCollectionViewController.swift */; };
 		8C066F802121CF720055CB7F /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C066F7F2121CF720055CB7F /* StationTableViewCell.swift */; };
 		8C066F822121D65B0055CB7F /* blobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C066F812121D65B0055CB7F /* blobView.swift */; };
 		8C54872521188FC300E5593B /* arrivalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C54872421188FC300E5593B /* arrivalDetailViewController.swift */; };
@@ -26,7 +27,6 @@
 		8CCCA4812118670B007AE5CC /* cleanStationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCCA4802118670B007AE5CC /* cleanStationName.swift */; };
 		8CCCA48D21186748007AE5CC /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCCA48C21186748007AE5CC /* RootViewController.swift */; };
 		8CCCA48F21186A22007AE5CC /* getLineColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCCA48E21186A22007AE5CC /* getLineColor.swift */; };
-		8CE89CE8211CE1990053C501 /* AllDeparturesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE89CE7211CE1990053C501 /* AllDeparturesCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,15 +40,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		021B29E121411A99008A153D /* AllStationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllStationsTableViewController.swift; sourceTree = "<group>"; };
 		0D826D8F39662F33657B2385 /* Pods-busBoardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-busBoardTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-busBoardTests/Pods-busBoardTests.debug.xcconfig"; sourceTree = "<group>"; };
 		155F11CAF8911EAEDB1034C2 /* Pods-busBoard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-busBoard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-busBoard/Pods-busBoard.debug.xcconfig"; sourceTree = "<group>"; };
 		2C134889522F306F30F0E230 /* Pods_busBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_busBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A1BF2BA3D33673CD8E94C13 /* Pods-busBoard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-busBoard.release.xcconfig"; path = "Pods/Target Support Files/Pods-busBoard/Pods-busBoard.release.xcconfig"; sourceTree = "<group>"; };
-		8C066F7D2121BDDE0055CB7F /* AllStationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AllStationsTableViewController.swift; path = /Users/blydro/code/busBoard/busBoard/AllStationsTableViewController.swift; sourceTree = "<absolute>"; };
-		8C066F7F2121CF720055CB7F /* StationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StationTableViewCell.swift; path = /Users/blydro/code/busBoard/busBoard/StationTableViewCell.swift; sourceTree = "<absolute>"; };
-		8C066F812121D65B0055CB7F /* blobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = blobView.swift; path = /Users/blydro/code/busBoard/busBoard/blobView.swift; sourceTree = "<absolute>"; };
+		8C066F7D2121BDDE0055CB7F /* AllDeparturesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AllDeparturesCollectionViewController.swift; path = busBoard/AllDeparturesCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
+		8C066F7F2121CF720055CB7F /* StationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StationTableViewCell.swift; path = busBoard/StationTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		8C066F812121D65B0055CB7F /* blobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = blobView.swift; path = busBoard/blobView.swift; sourceTree = SOURCE_ROOT; };
 		8C54872421188FC300E5593B /* arrivalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arrivalDetailViewController.swift; sourceTree = "<group>"; };
-		8C62314121199AE300FD109A /* timeFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = timeFunctions.swift; path = /Users/blydro/code/busBoard/busBoard/timeFunctions.swift; sourceTree = "<absolute>"; };
+		8C62314121199AE300FD109A /* timeFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = timeFunctions.swift; path = busBoard/timeFunctions.swift; sourceTree = SOURCE_ROOT; };
 		8CC2BADD211836C200D7BA9D /* busBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = busBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CC2BAE0211836C200D7BA9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CC2BAE2211836C200D7BA9D /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
@@ -62,10 +63,9 @@
 		8CC2BB002118387700D7BA9D /* arrivalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arrivalCollectionViewCell.swift; sourceTree = "<group>"; };
 		8CC2BB0221183DB600D7BA9D /* Arrival.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrival.swift; sourceTree = "<group>"; };
 		8CC2BB062118510C00D7BA9D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		8CCCA4802118670B007AE5CC /* cleanStationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = cleanStationName.swift; path = /Users/blydro/code/busBoard/busBoard/cleanStationName.swift; sourceTree = "<absolute>"; };
-		8CCCA48C21186748007AE5CC /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RootViewController.swift; path = /Users/blydro/code/busBoard/busBoard/RootViewController.swift; sourceTree = "<absolute>"; };
-		8CCCA48E21186A22007AE5CC /* getLineColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = getLineColor.swift; path = /Users/blydro/code/busBoard/busBoard/getLineColor.swift; sourceTree = "<absolute>"; };
-		8CE89CE7211CE1990053C501 /* AllDeparturesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllDeparturesCollectionViewController.swift; sourceTree = "<group>"; };
+		8CCCA4802118670B007AE5CC /* cleanStationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = cleanStationName.swift; path = busBoard/cleanStationName.swift; sourceTree = SOURCE_ROOT; };
+		8CCCA48C21186748007AE5CC /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RootViewController.swift; path = busBoard/RootViewController.swift; sourceTree = SOURCE_ROOT; };
+		8CCCA48E21186A22007AE5CC /* getLineColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = getLineColor.swift; path = busBoard/getLineColor.swift; sourceTree = SOURCE_ROOT; };
 		F42E21B15BD22AD8FA13DD41 /* Pods_busBoardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_busBoardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F54EBB48584FE7598B349500 /* Pods-busBoardTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-busBoardTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-busBoardTests/Pods-busBoardTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,10 +125,10 @@
 				8CCCA48C21186748007AE5CC /* RootViewController.swift */,
 				8CC2BAE0211836C200D7BA9D /* AppDelegate.swift */,
 				8CC2BAE2211836C200D7BA9D /* MainCollectionViewController.swift */,
-				8CE89CE7211CE1990053C501 /* AllDeparturesCollectionViewController.swift */,
 				8CC2BB002118387700D7BA9D /* arrivalCollectionViewCell.swift */,
 				8C54872421188FC300E5593B /* arrivalDetailViewController.swift */,
-				8C066F7D2121BDDE0055CB7F /* AllStationsTableViewController.swift */,
+				8C066F7D2121BDDE0055CB7F /* AllDeparturesCollectionViewController.swift */,
+				021B29E121411A99008A153D /* AllStationsTableViewController.swift */,
 				8C066F7F2121CF720055CB7F /* StationTableViewCell.swift */,
 				8C066F812121D65B0055CB7F /* blobView.swift */,
 				8CC2BAE4211836C200D7BA9D /* Main.storyboard */,
@@ -329,7 +329,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C066F7E2121BDDF0055CB7F /* AllStationsTableViewController.swift in Sources */,
+				021B29E221411A99008A153D /* AllStationsTableViewController.swift in Sources */,
+				8C066F7E2121BDDF0055CB7F /* AllDeparturesCollectionViewController.swift in Sources */,
 				8C62314221199AE400FD109A /* timeFunctions.swift in Sources */,
 				8C066F802121CF720055CB7F /* StationTableViewCell.swift in Sources */,
 				8CC2BB012118387700D7BA9D /* arrivalCollectionViewCell.swift in Sources */,
@@ -341,7 +342,6 @@
 				8CC2BAE3211836C200D7BA9D /* MainCollectionViewController.swift in Sources */,
 				8CC2BB072118510C00D7BA9D /* API.swift in Sources */,
 				8C54872521188FC300E5593B /* arrivalDetailViewController.swift in Sources */,
-				8CE89CE8211CE1990053C501 /* AllDeparturesCollectionViewController.swift in Sources */,
 				8CC2BAE1211836C200D7BA9D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
