@@ -33,8 +33,8 @@ class API {
     }
     
     func getArrivals(longitude: Double, latitude: Double, completion: @escaping () -> Void) {
-        //Alamofire.request("http://transportapi.com/v3/uk/bus/stops/near.json?app_id=e02c6fd6&app_key=593a37a8e30eaa9cff1c04c5530c67e8&lat=\(latitude)&lon=\(longitude)", method: .get, encoding: JSONEncoding.default)
-        Alamofire.request("https://transportapi.com/v3/uk/bus/stops/near.json?lat=55.882574&lon=-4.277300&app_id=e02c6fd6&app_key=593a37a8e30eaa9cff1c04c5530c67e8", method: .get, encoding: JSONEncoding.default)
+        Alamofire.request("https://transportapi.com/v3/uk/bus/stops/near.json?app_id=e02c6fd6&app_key=593a37a8e30eaa9cff1c04c5530c67e8&lat=\(latitude)&lon=\(longitude)", method: .get, encoding: JSONEncoding.default)
+        //Alamofire.request("https://transportapi.com/v3/uk/bus/stops/near.json?lat=55.882574&lon=-4.277300&app_id=e02c6fd6&app_key=593a37a8e30eaa9cff1c04c5530c67e8", method: .get, encoding: JSONEncoding.default)
             .responseJSON { response in
                 if let result = response.result.value {
                     let JSON = result as! NSDictionary
