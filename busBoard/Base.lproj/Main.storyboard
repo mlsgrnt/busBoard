@@ -83,13 +83,7 @@
                             <outlet property="dataSource" destination="dir-ac-XNC" id="zb8-G8-8xX"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Loading..." largeTitleDisplayMode="always" id="wgM-U0-ddY">
-                        <barButtonItem key="leftBarButtonItem" title="All" id="H3e-ju-5BD">
-                            <connections>
-                                <segue destination="Zb5-Ob-twu" kind="presentation" id="dK1-1x-fuJ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Loading..." id="wgM-U0-ddY"/>
                     <connections>
                         <outlet property="mainCollectionView" destination="8a0-PN-HJ0" id="yRd-Yt-bEV"/>
                     </connections>
