@@ -19,7 +19,7 @@ class arrivalCollectionViewCell: UICollectionViewCell {
         whenLabel.text = formatTimeDifference(arrivalTime: arrival.arrivalTime)
         
         //set cell background color
-        self.backgroundColor = getLineColor(line: arrival.lineName)
+        self.backgroundColor = getLineColor(direction: arrival.direction)
         
         
         

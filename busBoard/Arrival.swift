@@ -15,6 +15,7 @@ class Arrival: Equatable {
     let destination: String
     let id: String
     let lineName: String
+    let direction: String
     
     init(from apiDump: json) {
         if let bestArrivalTime = apiDump["expected_departure_time"] as? String {
@@ -29,6 +30,7 @@ class Arrival: Equatable {
         self.destination = apiDump["direction"] as! String
         self.id = apiDump["id"] as! String //this is not entirely unique but works for equtability
         self.lineName = apiDump["line_name"] as! String
+        self.direction = apiDump["dir"] as! String
     }
     
     //equitability

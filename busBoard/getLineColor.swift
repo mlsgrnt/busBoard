@@ -9,10 +9,18 @@
 import Foundation
 import UIKit
 
-func getLineColor(line: String) -> UIColor {
+func getLineColor(direction: String) -> UIColor {
     //default:
     var color = UIColor.lightGray
     
+    print(direction)
+    
+    if (direction == "inbound") {
+        color = UIColor.orange
+    }
+    if (direction == "outbound") {
+        color = UIColor(named: "s8")!
+    }
     
     return color
 }

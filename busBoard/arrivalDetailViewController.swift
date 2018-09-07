@@ -38,7 +38,7 @@ class arrivalDetailViewController: UIViewController {
         }
         
         //line based background color
-        self.view.backgroundColor = getLineColor(line: arrival.lineName)
+        self.view.backgroundColor = getLineColor(direction: arrival.direction)
         
         
         //set labels
