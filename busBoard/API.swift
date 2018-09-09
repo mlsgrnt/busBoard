@@ -18,6 +18,7 @@ class API {
     var arrivals: [Arrival]
     var allArrivals: [Arrival]
     var nearestStationName: String?
+    var nearestStationType: String? //TODO: Don't do this if we rewrite
     
     init() {
         arrivals = [Arrival]()
@@ -32,17 +33,18 @@ class API {
     }
     
     func getArrivals(longitude: Double, latitude: Double, completion: @escaping () -> Void) {
-        Alamofire.request("https://vbb-rest.glitch.me/stations/nearby?latitude=\(latitude)&longitude=\(longitude)", method: .get, encoding: JSONEncoding.default)
-        //Alamofire.request("http://192.168.2.100:5000/nearby.json", method: .get, encoding: JSONEncoding.default)
+        //Alamofire.request("https://transportapi.com/v3/uk/bus/stops/near.json?app_id=e02c6fd6&app_key=593a37a8e30eaa9cff1c04c5530c67e8&lat=\(latitude)&lon=\(longitude)", method: .get, encoding: JSONEncoding.default)
+        Alamofire.request("https://transportapi.com/v3/uk/bus/stops/near.json?lat=55.882574&lon=-4.277300&app_id=e02c6fd6&app_key=593a37a8e30eaa9cff1c04c5530c67e8", method: .get, encoding: JSONEncoding.default)
             .responseJSON { response in
                 if let result = response.result.value {
-                    let JSON = result as! NSArray
+                    let JSON = (result as! NSDictionary)["stops"] as! NSArray
                     guard let nearestStation = JSON[0] as? json else {
-                        fatalError("not in beriln")
+                        fatalError("not in glasgow")
                     }
                     self.nearestStationName = cleanStationName(nearestStation["name"] as! String)
+                    self.nearestStationType = nearestStation["mode"] as? String
                     completion()
-                    self.getDepartures(stationId: nearestStation["id"] as! String)
+                    self.getDepartures(stationId: nearestStation["atcocode"] as! String)
                 }
                 
         }
@@ -51,11 +53,12 @@ class API {
     private func getDepartures(stationId: String, duration: Int = 30) {
         print("aaah getting departures better pray i don't do this too often")
         
-        Alamofire.request("https://vbb-rest.glitch.me/stations/\(stationId)/departures?duration=\(duration)", method: .get, encoding: JSONEncoding.default)
-        //Alamofire.request("http://192.168.2.100:5000/departures.json", method: .get, encoding: JSONEncoding.default)
+        let requestUrl = self.nearestStationType == "bus" ? "/uk/bus/stop/\(stationId)/live.json" : "/uk/train/station/\(stationId)/live.json"
+
+        Alamofire.request("http://transportapi.com/v3/\(requestUrl)?group=no&app_id=e02c6fd6&app_key=593a37a8e30eaa9cff1c04c5530c67e8", method: .get, encoding: JSONEncoding.default)
             .responseJSON { response in
                 if let result = response.result.value {
-                    guard let JSON = result as? NSArray else {
+                    guard let JSON = result as? NSDictionary else {
                         //what in the world
                         print(result)
                         fatalError("JSON wasn't array!")
@@ -63,34 +66,14 @@ class API {
                     
                     //real quick before we load in new ones
                     self.allArrivals.removeAll()
-                    for arrival in JSON {
-                        //Don't add cacnelled trips!
-                        if((arrival as! json)["cancelled"] == nil) {
-                            self.allArrivals.append(Arrival(from: arrival as! json))
-                        }
+                    let departures = (JSON["departures"] as! NSDictionary)["all"] as! NSArray
+                    for departure in departures {
+                        self.allArrivals.append(Arrival(from: departure as! json))
                     }
                     
-                    //create stationLineCount with amazing hacxx. It's not perfect but it provides a good enough heuristic
-                    //first let's check for no departures at all
-                    if(self.allArrivals.count == 0) {
-                        //bad start. let's increase right away
-                        self.getDepartures(stationId: stationId, duration: duration + 100)
-                        return
-                    }
-                    //are you ready for this ALGORITHM
-                    let stationLineCount = (((JSON[0] as! json)["stop"] as! json)["lines"] as! NSArray).filter({ (line) -> Bool in
-                        return (line as! NSDictionary)["night"] as! Int == 0
-                    }).count
-                    
-                    //check that we have at least 2 departures for each line (one for each direction)
-                    guard self.allArrivals.count > stationLineCount * 2 else {
-                        //we need bigger guns
-                        self.getDepartures(stationId: stationId, duration: duration + 60)
-                        return
-                    }
-                }
                 
                 //No update now! Update occurs on filter!
+                }
         }
     }
     
@@ -130,9 +113,9 @@ class API {
         }
         
         var filtered = [Arrival]()
-        
+        /*
         let sortedByLine = soonArrivals.reduce(into: [String:[Arrival]]()) { (dict, entry) in
-            let key = entry.line.value(forKey: "id") as! String
+            let key = entry.lineName
             if var existingArray = dict[key] {
                 existingArray.append(entry)
                 dict[key] = existingArray
@@ -150,11 +133,9 @@ class API {
             linesAndTheirDestinations[lineName] = arrivals
                 .reduce(into: [Arrival]()) { (arrivals, arrival) in
                     if arrivals.first(where: {$0.destination == arrival.destination}) == nil {
-                        //get the score for this arrival -- useful later!
-                        arrival.getScore(orientation: orientation)
                         arrivals.append(arrival)
                     }
-                }
+                }/*
                 .sorted(by: { (a, b) -> Bool in
                     return a.score! > b.score!
                 })
@@ -163,7 +144,7 @@ class API {
                     if(arrivals.count == 0 || arrivals[arrivals.count - 1].score == arrival.score) {
                         arrivals.append(arrival)
                     }
-                })
+                })*/
             
         }
         //super awesome, not hacky way to put our well filtered stuff into the final filtered array
@@ -177,7 +158,7 @@ class API {
             a.arrivalTime < b.arrivalTime
         })
         
-        
+        */
         
         //completion() is an animation, so only run it if we have a change!
         if(self.arrivals != filtered) {

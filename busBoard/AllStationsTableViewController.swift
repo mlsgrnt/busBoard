@@ -76,7 +76,7 @@ class AllStationsTableViewController: UITableViewController {
             cell.stationNameLabel.backgroundColor = UIColor.white
         }
         
-        cell.blobView.setBlobType(color: getLineColor(line: arrival!.line), type: blobType)
+        cell.blobView.setBlobType(color: getLineColor(direction: arrival!.direction), type: blobType)
 
         //force redraw
         cell.blobView.setNeedsDisplay()

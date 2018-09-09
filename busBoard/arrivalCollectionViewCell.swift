@@ -19,20 +19,8 @@ class arrivalCollectionViewCell: UICollectionViewCell {
         whenLabel.text = formatTimeDifference(arrivalTime: arrival.arrivalTime)
         
         //set cell background color
-        self.backgroundColor = getLineColor(line: arrival.line)
-        
-        //U4 Fix
-        if(arrival.line["id"] as! String == "u4") {
-            whatLabel.textColor = UIColor.darkText
-            whereLabel.textColor = UIColor.darkText
-            whenLabel.textColor = UIColor.darkText
-        } else {
-            //because cells are dequeued we need to do this
-            whatLabel.textColor = UIColor.white
-            whereLabel.textColor = UIColor.white
-            whenLabel.textColor = UIColor.white
-        }
-        
+        self.backgroundColor = getLineColor(direction: arrival.direction)
+                
         //border radius to match popup
         self.layer.cornerRadius = 8
         self.clipsToBounds = true
