@@ -55,7 +55,7 @@ class API {
         
         let requestUrl = self.nearestStationType == "bus" ? "/uk/bus/stop/\(stationId)/live.json" : "/uk/train/station/\(stationId)/live.json"
 
-        Alamofire.request("http://transportapi.com/v3/\(requestUrl)?group=no&app_id=e02c6fd6&app_key=593a37a8e30eaa9cff1c04c5530c67e8", method: .get, encoding: JSONEncoding.default)
+        Alamofire.request("https://transportapi.com/v3/\(requestUrl)?group=no&app_id=e02c6fd6&app_key=593a37a8e30eaa9cff1c04c5530c67e8", method: .get, encoding: JSONEncoding.default)
             .responseJSON { response in
                 if let result = response.result.value {
                     guard let JSON = result as? NSDictionary else {
