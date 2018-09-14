@@ -17,8 +17,8 @@ class AllStationsTableViewController: UITableViewController {
     var hasScrolled: Bool?
         
     override func viewWillAppear(_ animated: Bool) {
-        let journeyId = self.arrival?.id
-        api.getStationsAlong(journeyId: journeyId!) { (allStations) in
+        let timetableUrl = self.arrival?.timetableUrl
+        api.getStationsAlong(timetableUrl: timetableUrl!) { (allStations) in
             self.stations = allStations
             self.tableView.reloadData()
         }
@@ -52,16 +52,16 @@ class AllStationsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath) as! StationTableViewCell
 
         let journeySection = stations![indexPath.row] as! NSDictionary
-        let station = journeySection["station"] as! NSDictionary
         
         var blobType = "mid"
         
         // Configure the cell...
-        cell.stationNameLabel.text = cleanStationName(station["name"] as! String)
+        cell.stationNameLabel.text = journeySection["name"] as? String
+        cell.timeLabel.text = journeySection["time"] as? String
         
         if(indexPath.row == 0 || indexPath.row == stations!.count - 1) {
             cell.stationNameLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
-            blobType = indexPath.row == stations!.count - 1 ? "end" : "start"
+            blobType = indexPath.row == stations!.count - 1 ? "end" : "startActuallyNo"
         } else {
             cell.stationNameLabel.font = UIFont.systemFont(ofSize: 22.0)
         }

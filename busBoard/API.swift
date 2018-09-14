@@ -80,11 +80,8 @@ class API {
         }
     }
     
-    public func getStationsAlong(journeyId: String, completion: @escaping (_: NSArray) -> Void) {
-        let safeJourneyId = journeyId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-        let requestUrl = "https://vbb-rest.glitch.me/journeys/legs/\(safeJourneyId!)?lineName=null"
-        //let requestUrl = "http://192.168.2.100:5000/leg.json"
-        Alamofire.request(requestUrl, method: .get, encoding: JSONEncoding.default)
+    public func getStationsAlong(timetableUrl: String, completion: @escaping (_: NSArray) -> Void) {
+        Alamofire.request(timetableUrl, method: .get, encoding: JSONEncoding.default)
             .responseJSON { response in
                 if let result = response.result.value {
                     guard let JSON = result as? NSDictionary else {
@@ -92,7 +89,7 @@ class API {
                         print(result)
                         fatalError("JSON wasn't array!")
                     }
-                    completion(JSON["passed"] as! NSArray)
+                    completion(JSON["stops"] as! NSArray)
                 }
         }
     }

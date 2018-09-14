@@ -10,6 +10,7 @@ import UIKit
 class StationTableViewCell: UITableViewCell {
     @IBOutlet weak var stationNameLabel: UILabel!
     @IBOutlet weak var blobView: blobView!
+    @IBOutlet weak var timeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

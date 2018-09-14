@@ -361,10 +361,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acx-PX-8DQ">
-                                            <rect key="frame" x="56" y="14.5" width="287" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acx-PX-8DQ">
+                                            <rect key="frame" x="56" y="15" width="42" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJA-t2-JyJ">
+                                            <rect key="frame" x="106" y="15" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5DS-Cv-AAk" userLabel="blob view" customClass="blobView" customModule="busBoard" customModuleProvider="target">
@@ -373,18 +379,22 @@
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Acx-PX-8DQ" secondAttribute="trailing" constant="16" id="JwF-Wo-68z"/>
+                                        <constraint firstItem="yJA-t2-JyJ" firstAttribute="centerY" secondItem="URP-xo-0RI" secondAttribute="centerY" id="2tx-7B-Uot"/>
+                                        <constraint firstItem="yJA-t2-JyJ" firstAttribute="leading" secondItem="Acx-PX-8DQ" secondAttribute="trailing" constant="8" id="419-65-bR4"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="yJA-t2-JyJ" secondAttribute="trailing" constant="8" id="Yka-U8-tDu"/>
                                         <constraint firstItem="5DS-Cv-AAk" firstAttribute="top" secondItem="URP-xo-0RI" secondAttribute="top" id="b2o-BS-eiS"/>
                                         <constraint firstAttribute="bottom" secondItem="5DS-Cv-AAk" secondAttribute="bottom" id="bfS-ZQ-JLu"/>
                                         <constraint firstItem="5DS-Cv-AAk" firstAttribute="leading" secondItem="URP-xo-0RI" secondAttribute="leading" constant="8" id="d8u-AI-hMr"/>
                                         <constraint firstItem="Acx-PX-8DQ" firstAttribute="leading" secondItem="URP-xo-0RI" secondAttribute="leadingMargin" constant="40" id="dHc-4c-Yba"/>
                                         <constraint firstItem="Acx-PX-8DQ" firstAttribute="centerY" secondItem="URP-xo-0RI" secondAttribute="centerY" id="dO4-Ad-KBv"/>
                                         <constraint firstItem="Acx-PX-8DQ" firstAttribute="leading" secondItem="5DS-Cv-AAk" secondAttribute="trailing" id="fSG-Fy-mpE"/>
+                                        <constraint firstItem="yJA-t2-JyJ" firstAttribute="leading" secondItem="Acx-PX-8DQ" secondAttribute="trailing" constant="8" id="uzG-nZ-7R3"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="blobView" destination="5DS-Cv-AAk" id="EFz-w3-eVz"/>
                                     <outlet property="stationNameLabel" destination="Acx-PX-8DQ" id="8iw-4z-Q76"/>
+                                    <outlet property="timeLabel" destination="yJA-t2-JyJ" id="OgW-Wd-NEY"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
