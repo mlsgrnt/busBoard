@@ -91,19 +91,21 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        api.getArrivals(longitude: location.longitude, latitude: location.latitude, completion: {
+        api.getArrivals(longitude: location.longitude, latitude: location.latitude, fullCompletion: {
+            DispatchQueue.main.async {
+                //Loading indicator disappear!
+                //TODO: we're calling this a biiit often. Find somewhere more appropriate to put this!
+                self.loadingSpinnerView.stopAnimating()
+                
+                if(self.allDeparturesButton.title == "") {
+                    self.allDeparturesButton.title = "All"
+                }
+                self.collectionView?.reloadSections(IndexSet(integer: 0))
+            }
+        }, completion: {
             DispatchQueue.main.async {
                 self.navigationItem.title = self.api.nearestStationName
-                DispatchQueue.main.async {
-                    //Loading indicator disappear!
-                    //TODO: we're calling this a biiit often. Find somewhere more appropriate to put this!
-                    self.loadingSpinnerView.stopAnimating()
-                    
-                    if(self.allDeparturesButton.title == "") {
-                        self.allDeparturesButton.title = "All"
-                    }
-                    self.collectionView?.reloadSections(IndexSet(integer: 0))
-                }
+                
             }
         })
     }
