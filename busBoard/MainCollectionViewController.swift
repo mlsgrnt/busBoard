@@ -44,11 +44,9 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
         self.locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
             //locationManager.startMonitoringSignificantLocationChanges()
             locationManager.requestLocation()
-            locationManager.headingFilter = 0.000000000000001
-            locationManager.startUpdatingHeading()
         } else {
             fatalError("u need location, dummy")
         }
@@ -96,21 +94,16 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
         api.getArrivals(longitude: location.longitude, latitude: location.latitude, completion: {
             DispatchQueue.main.async {
                 self.navigationItem.title = self.api.nearestStationName
-            }
-        })
-    }
-    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        locationManager.headingFilter = 1 //once we get the first heading, decrease the accuracy
-        api.filterArrivalsByCompassDirection(direction: Double(newHeading.magneticHeading), completion: {
-            DispatchQueue.main.async {
-                //Loading indicator disappear!
-                //TODO: we're calling this a biiit often. Find somewhere more appropriate to put this!
-                self.loadingSpinnerView.stopAnimating()
-                
-                if(self.allDeparturesButton.title == "") {
-                    self.allDeparturesButton.title = "All"
+                DispatchQueue.main.async {
+                    //Loading indicator disappear!
+                    //TODO: we're calling this a biiit often. Find somewhere more appropriate to put this!
+                    self.loadingSpinnerView.stopAnimating()
+                    
+                    if(self.allDeparturesButton.title == "") {
+                        self.allDeparturesButton.title = "All"
+                    }
+                    self.collectionView?.reloadSections(IndexSet(integer: 0))
                 }
-                self.collectionView?.reloadSections(IndexSet(integer: 0))
             }
         })
     }

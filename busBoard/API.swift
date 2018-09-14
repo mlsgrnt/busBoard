@@ -44,13 +44,13 @@ class API {
                     self.nearestStationName = cleanStationName(nearestStation["name"] as! String)
                     self.nearestStationType = nearestStation["mode"] as? String
                     completion()
-                    self.getDepartures(stationId: nearestStation["atcocode"] as! String)
+                    self.getDepartures(stationId: nearestStation["atcocode"] as! String, completion: completion)
                 }
                 
         }
     }
     
-    private func getDepartures(stationId: String, duration: Int = 30) {
+    private func getDepartures(stationId: String, completion: @escaping () -> Void) {
         print("aaah getting departures better pray i don't do this too often")
         
         let requestUrl = self.nearestStationType == "bus" ? "/uk/bus/stop/\(stationId)/live.json" : "/uk/train/station/\(stationId)/live.json"
@@ -64,15 +64,18 @@ class API {
                         fatalError("JSON wasn't array!")
                     }
                     
+                    let departuresDictionary = JSON["departures"] as! NSDictionary
+                    
                     //real quick before we load in new ones
                     self.allArrivals.removeAll()
-                    let departures = (JSON["departures"] as! NSDictionary)["all"] as! NSArray
+                    let departures = departuresDictionary["all"] as! NSArray
                     for departure in departures {
                         self.allArrivals.append(Arrival(from: departure as! json))
                     }
-                    
-                
-                //No update now! Update occurs on filter!
+
+                    self.filterArrivalsByCompassDirection {
+                        completion()
+                    }
                 }
         }
     }
@@ -97,7 +100,7 @@ class API {
     //BAD CODE AHEAD
     //THIS IS THE SORTING PART
     //IT'S REALLY REALLY BAD
-    func filterArrivalsByCompassDirection(direction orientation: Double, completion: @escaping () -> Void) {
+    func filterArrivalsByCompassDirection(completion: @escaping () -> Void) {
         //if we don't have any arrivals, let's do nothing
         //TODO: display a message!
         if(self.allArrivals.count == 0) {
@@ -113,7 +116,7 @@ class API {
         }
         
         var filtered = [Arrival]()
-        /*
+        
         let sortedByLine = soonArrivals.reduce(into: [String:[Arrival]]()) { (dict, entry) in
             let key = entry.lineName
             if var existingArray = dict[key] {
@@ -158,7 +161,7 @@ class API {
             a.arrivalTime < b.arrivalTime
         })
         
-        */
+        
         
         //completion() is an animation, so only run it if we have a change!
         if(self.arrivals != filtered) {
