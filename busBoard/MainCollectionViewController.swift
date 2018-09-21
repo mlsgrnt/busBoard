@@ -105,7 +105,6 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
         }, completion: {
             DispatchQueue.main.async {
                 self.navigationItem.title = self.api.nearestStationName
-                
             }
         })
     }
