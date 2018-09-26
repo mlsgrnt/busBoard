@@ -20,7 +20,7 @@ func getDiffString(arrivalTime: Date) -> String {
 }
 
 func getDelayString(arrival: Arrival) -> String {
-    let delay = arrival.delay / 60 //seconds -> minutes
+    let delay = Int(arrival.delay / 60) //seconds -> minutes
     
     //delay string
     var delayString = "No realtime info available"
