@@ -6,6 +6,7 @@ target 'busBoard' do
   use_frameworks!
 
   # Pods for busBoard
+  pod 'LifetimeTracker'
   pod 'Alamofire', '~> 4.7'
   pod 'VectorMath'
   source 'https://github.com/CocoaPods/Specs.git'

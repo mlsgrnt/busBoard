@@ -54,6 +54,15 @@ class AllStationsTableViewController: UITableViewController {
         let journeySection = stations![indexPath.row] as! NSDictionary
         let station = journeySection["station"] as! NSDictionary
         
+        var departureTime = journeySection["arrival"] as! NSString
+        if let realDepartureTime = journeySection["departure"] as? NSString {
+            departureTime = realDepartureTime
+        }
+        print(departureTime)
+        
+        // print(departureTime)
+        // TODO: show time
+        
         var blobType = "mid"
         
         // Configure the cell...

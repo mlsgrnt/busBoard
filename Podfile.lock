@@ -1,5 +1,6 @@
 PODS:
-  - Alamofire (4.7.2)
+  - Alamofire (4.8.1)
+  - LifetimeTracker (1.6.0)
   - PeekPop (1.0.0)
   - VectorMath (0.3.3):
     - VectorMath/Core (= 0.3.3)
@@ -13,20 +14,23 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - LifetimeTracker
   - PeekPop (~> 1.0)
   - VectorMath
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - LifetimeTracker
     - PeekPop
     - VectorMath
 
 SPEC CHECKSUMS:
-  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  LifetimeTracker: 8b7f2979fa70a41e9aaff63d158cae7a027eef10
   PeekPop: dcac0f339476b99eb50f8e3bc584f332c744ecf1
   VectorMath: 9442bb470704903dd0343547454904ba66355302
 
-PODFILE CHECKSUM: 872867648015603fca1295b93a32e4e8639313e8
+PODFILE CHECKSUM: 11f9fac34c3f4f963d9c15e587e192fadaa0498a
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1
