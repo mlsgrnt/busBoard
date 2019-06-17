@@ -47,7 +47,7 @@ class MainCollectionViewController: UICollectionViewController, CLLocationManage
             locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
             //locationManager.startMonitoringSignificantLocationChanges()
             locationManager.requestLocation()
-            locationManager.headingFilter = 0.000000000000001
+            locationManager.headingFilter = 30
             locationManager.startUpdatingHeading()
         } else {
             fatalError("u need location, dummy")

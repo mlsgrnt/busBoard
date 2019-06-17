@@ -217,9 +217,11 @@
 				TargetAttributes = {
 					8CC2BADC211836C200D7BA9D = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1020;
 					};
 					8CC2BAF0211836C400D7BA9D = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 8CC2BADC211836C200D7BA9D;
 					};
 				};
@@ -515,7 +517,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = blydro.busBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -535,7 +537,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = blydro.busBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -556,7 +558,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = blydro.busBoardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/busBoard.app/busBoard";
 			};
@@ -578,7 +580,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = blydro.busBoardTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/busBoard.app/busBoard";
 			};

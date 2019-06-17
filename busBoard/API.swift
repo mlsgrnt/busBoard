@@ -32,8 +32,13 @@ class API {
     }
     
     func getArrivals(longitude: Double, latitude: Double, completion: @escaping () -> Void) {
-        Alamofire.request("https://vbb-rest.glitch.me/stations/nearby?latitude=\(latitude)&longitude=\(longitude)", method: .get, encoding: JSONEncoding.default)
-        //Alamofire.request("http://192.168.2.100:5000/nearby.json", method: .get, encoding: JSONEncoding.default)
+        #if DEBUG
+        let url = "http://192.168.2.104:5000/nearby.json"
+        #else
+        let url = "https://vbb-rest.glitch.me/stations/nearby?latitude=\(latitude)&longitude=\(longitude)"
+        #endif
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default)
+        //Alamofire.request(, method: .get, encoding: JSONEncoding.default)
             .responseJSON { response in
                 if let result = response.result.value {
                     let JSON = result as! NSArray
@@ -51,8 +56,14 @@ class API {
     private func getDepartures(stationId: String, duration: Int = 30) {
         print("aaah getting departures better pray i don't do this too often")
         
-        Alamofire.request("https://vbb-rest.glitch.me/stations/\(stationId)/departures?duration=\(duration)", method: .get, encoding: JSONEncoding.default)
-        //Alamofire.request("http://192.168.2.100:5000/departures.json", method: .get, encoding: JSONEncoding.default)
+        #if DEBUG
+        let url = "http://192.168.2.104:5000/departures.json"
+        #else
+        let url = "https://vbb-rest.glitch.me/stations/\(stationId)/departures?duration=\(duration)"
+        #endif
+        
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default)
+        //Alamofire.request(, method: .get, encoding: JSONEncoding.default)
             .responseJSON { response in
                 if let result = response.result.value {
                     guard let JSON = result as? NSArray else {
@@ -78,9 +89,12 @@ class API {
                         return
                     }
                     //are you ready for this ALGORITHM
-                    let stationLineCount = (((JSON[0] as! json)["stop"] as! json)["lines"] as! NSArray).filter({ (line) -> Bool in
-                        return (line as! NSDictionary)["night"] as! Int == 0
-                    }).count
+                    var stationLineCount = 0
+                    if let lines = (((JSON[0] as! json)["stop"] as! json)["lines"] as? NSArray) {
+                        stationLineCount = lines.filter({ (line) -> Bool in
+                            return (line as! NSDictionary)["night"] as! Int == 0
+                        }).count
+                    }
                     
                     //check that we have at least 2 departures for each line (one for each direction)
                     guard self.allArrivals.count > stationLineCount * 2 else {
@@ -96,8 +110,13 @@ class API {
     
     public func getStationsAlong(journeyId: String, completion: @escaping (_: NSArray) -> Void) {
         let safeJourneyId = journeyId.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        
+        #if DEBUG
+        let requestUrl = "http://192.168.2.104:5000/leg.json"
+        #else
         let requestUrl = "https://vbb-rest.glitch.me/journeys/legs/\(safeJourneyId!)?lineName=null"
-        //let requestUrl = "http://192.168.2.100:5000/leg.json"
+        #endif
+        
         Alamofire.request(requestUrl, method: .get, encoding: JSONEncoding.default)
             .responseJSON { response in
                 if let result = response.result.value {

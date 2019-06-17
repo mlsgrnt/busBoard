@@ -54,19 +54,32 @@ class AllStationsTableViewController: UITableViewController {
         let journeySection = stations![indexPath.row] as! NSDictionary
         let station = journeySection["station"] as! NSDictionary
         
-        var departureTime = journeySection["arrival"] as! NSString
-        if let realDepartureTime = journeySection["departure"] as? NSString {
-            departureTime = realDepartureTime
-        }
-        print(departureTime)
+        var departureTime = "2019-01-01T00:00:00.000000+0200"
         
-        // print(departureTime)
-        // TODO: show time
+        if let arrivalTime = journeySection["arrival"] as? NSString {
+            departureTime = arrivalTime as String
+        }
+        if let realDepartureTime = journeySection["departure"] as? NSString {
+            departureTime = realDepartureTime as String
+        }
+        
+        // Get relative time
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ"
+        let departureDate = dateFormatter.date(from: departureTime)!
+        var naturalDepartureTime = getShortRelativeDateFor(date: departureDate as NSDate)
+        
+        
+        // Add conditional ago
+        if departureDate.timeIntervalSinceNow < 0 {
+            naturalDepartureTime = naturalDepartureTime + " ago"
+        }
         
         var blobType = "mid"
         
         // Configure the cell...
         cell.stationNameLabel.text = cleanStationName(station["name"] as! String)
+        cell.arrivalTimeLabel.text = naturalDepartureTime
         
         if(indexPath.row == 0 || indexPath.row == stations!.count - 1) {
             cell.stationNameLabel.font = UIFont.boldSystemFont(ofSize: 22.0)

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kU8-ZQ-nb7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kU8-ZQ-nb7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,7 +38,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="SAA-Ny-XYH">
-                                            <rect key="frame" x="20" y="7.5" width="180" height="76.5"/>
+                                            <rect key="frame" x="20" y="7" width="179.5" height="76.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="188" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8Y-Iy-6n2" userLabel="What">
                                                     <rect key="frame" x="0.0" y="0.0" width="41.5" height="27.5"/>
@@ -49,7 +49,7 @@
                                                     <size key="shadowOffset" width="1" height="1"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rathaus Steglitz is a long title" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPw-iC-bsO" userLabel="Where">
-                                                    <rect key="frame" x="0.0" y="27.5" width="180" height="49"/>
+                                                    <rect key="frame" x="0.0" y="27.5" width="179.5" height="49"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -59,7 +59,7 @@
                                             </subviews>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="now" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="tj8-iT-uLd" userLabel="When">
-                                            <rect key="frame" x="200.5" y="20" width="79.5" height="49"/>
+                                            <rect key="frame" x="200.5" y="20.5" width="79.5" height="49"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -128,7 +128,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="WtQ-MD-mOv">
-                                            <rect key="frame" x="20" y="7.5" width="180" height="76.5"/>
+                                            <rect key="frame" x="20" y="7" width="179.5" height="76.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="188" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOc-42-n8z" userLabel="What">
                                                     <rect key="frame" x="0.0" y="0.0" width="41.5" height="27.5"/>
@@ -139,7 +139,7 @@
                                                     <size key="shadowOffset" width="1" height="1"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rathaus Steglitz is a long title" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uri-Fi-Cyr" userLabel="Where">
-                                                    <rect key="frame" x="0.0" y="27.5" width="180" height="49"/>
+                                                    <rect key="frame" x="0.0" y="27.5" width="179.5" height="49"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -149,7 +149,7 @@
                                             </subviews>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="now" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="Ymu-Kx-eys" userLabel="When">
-                                            <rect key="frame" x="200.5" y="20" width="79.5" height="49"/>
+                                            <rect key="frame" x="200.5" y="20.5" width="79.5" height="49"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -201,7 +201,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WcK-Zy-IaB">
-                                <rect key="frame" x="28" y="176" width="319" height="316"/>
+                                <rect key="frame" x="28" y="175.5" width="319" height="316"/>
                                 <subviews>
                                     <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="S8c-fz-kdt">
                                         <rect key="frame" x="0.0" y="0.0" width="319" height="0.0"/>
@@ -354,35 +354,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stationCell" id="8cl-Gl-eyF" customClass="StationTableViewCell" customModule="busBoard" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="50"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stationCell" rowHeight="75" id="8cl-Gl-eyF" customClass="StationTableViewCell" customModule="busBoard" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8cl-Gl-eyF" id="URP-xo-0RI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acx-PX-8DQ">
-                                            <rect key="frame" x="56" y="14.5" width="287" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acx-PX-8DQ">
+                                            <rect key="frame" x="56" y="27.5" width="261" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5DS-Cv-AAk" userLabel="blob view" customClass="blobView" customModule="busBoard" customModuleProvider="target">
-                                            <rect key="frame" x="8" y="0.0" width="48" height="50"/>
+                                            <rect key="frame" x="8" y="0.0" width="48" height="75"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ol-DI-1nC" userLabel="Arrival Time Label">
+                                            <rect key="frame" x="317" y="27" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Acx-PX-8DQ" secondAttribute="trailing" constant="16" id="JwF-Wo-68z"/>
+                                        <constraint firstItem="5Ol-DI-1nC" firstAttribute="leading" secondItem="Acx-PX-8DQ" secondAttribute="trailing" id="EoT-VF-4Ky"/>
+                                        <constraint firstItem="5Ol-DI-1nC" firstAttribute="trailing" secondItem="URP-xo-0RI" secondAttribute="trailingMargin" id="XuL-Hr-fJm"/>
                                         <constraint firstItem="5DS-Cv-AAk" firstAttribute="top" secondItem="URP-xo-0RI" secondAttribute="top" id="b2o-BS-eiS"/>
                                         <constraint firstAttribute="bottom" secondItem="5DS-Cv-AAk" secondAttribute="bottom" id="bfS-ZQ-JLu"/>
                                         <constraint firstItem="5DS-Cv-AAk" firstAttribute="leading" secondItem="URP-xo-0RI" secondAttribute="leading" constant="8" id="d8u-AI-hMr"/>
                                         <constraint firstItem="Acx-PX-8DQ" firstAttribute="leading" secondItem="URP-xo-0RI" secondAttribute="leadingMargin" constant="40" id="dHc-4c-Yba"/>
                                         <constraint firstItem="Acx-PX-8DQ" firstAttribute="centerY" secondItem="URP-xo-0RI" secondAttribute="centerY" id="dO4-Ad-KBv"/>
                                         <constraint firstItem="Acx-PX-8DQ" firstAttribute="leading" secondItem="5DS-Cv-AAk" secondAttribute="trailing" id="fSG-Fy-mpE"/>
+                                        <constraint firstItem="5Ol-DI-1nC" firstAttribute="centerY" secondItem="URP-xo-0RI" secondAttribute="centerY" id="fq0-q0-zlp"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="arrivalTimeLabel" destination="5Ol-DI-1nC" id="9Pi-oX-HO6"/>
                                     <outlet property="blobView" destination="5DS-Cv-AAk" id="EFz-w3-eVz"/>
                                     <outlet property="stationNameLabel" destination="Acx-PX-8DQ" id="8iw-4z-Q76"/>
                                 </connections>

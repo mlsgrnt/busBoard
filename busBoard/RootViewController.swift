@@ -12,7 +12,7 @@ class RootViewController: UINavigationController {
     var arrivalController: MainCollectionViewController!
 
     public func reloadCollectionView() {
-        guard let arrivalController = self.childViewControllers[0] as? MainCollectionViewController else {
+        guard let arrivalController = self.children[0] as? MainCollectionViewController else {
             fatalError("Child isn't proper!")
         }
         self.arrivalController = arrivalController
@@ -25,7 +25,7 @@ class RootViewController: UINavigationController {
     }
     
     public func stopUpdatingHeading() {
-        guard let arrivalController = self.childViewControllers[0] as? MainCollectionViewController else {
+        guard let arrivalController = self.children[0] as? MainCollectionViewController else {
             fatalError("Child isn't proper!")
         }
         self.arrivalController = arrivalController
