@@ -8,6 +8,6 @@ Learned a lot about Swift building this project. Went through many iterations an
 #### I am very proud that in an early build I predicted the iOS 13 design paradigm of modals popping up from the bottom!
 <img src="demo.gif" width="300">
 
-Later I shifted to a cool push pop animation where the entry expanded to a full view! Sadly I never took a video of this while the app worked.
+Later I shifted to a cool push pop animation where the entry expanded to a full view! Sadly I never took a video of this while the app worked. I should've though! I even had this really cool blob view to show all stations which matched the screens in the busses...
 
 Does not work anymore... The API server I built for this was really hastily thrown together and would be a huge hassle to fix.
