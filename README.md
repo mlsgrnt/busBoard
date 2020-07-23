@@ -6,6 +6,7 @@ BVG Berlin realtime departure board using the compass! This is the project I beg
 Learned a lot about Swift building this project. Went through many iterations and rebuilds from scratch.
 
 #### I am very proud that in an early build I predicted the iOS 13 design paradigm of modals popping up from the bottom!
+<img src="demo.gif" width="300">
 
 Later I shifted to a cool push pop animation where the entry expanded to a full view! Sadly I never took a video of this while the app worked.
 
